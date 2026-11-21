@@ -1,66 +1,58 @@
 # mpstack for Claude Code
 
-mpstack joins two skill packs into one workflow for Claude Code.
+One plugin that merges two skill packs into a single engineering workflow for Claude Code.
 
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan runs the work: playbooks, principles, verification, review, PRs.
-- [Matt Pocock's skills](https://github.com/mattpocock/skills) fill the planning steps pstack leaves out: the interview, the spec, the tickets, the glossary and ADRs.
+- [pstack](https://github.com/cursor/plugins) by Lauren Tan supplies the work: 22 playbooks, 24 principles, verification, review panels, PR handling.
+- [Matt Pocock's skills](https://github.com/mattpocock/skills) supply the planning pstack has no skill for: the interview, the spec, the tickets, the glossary and ADRs, cited research.
 
-Neither pack is copied or patched. Both install as their own plugins and update on their own. mpstack holds only the join, so there is nothing to re-port when an upstream ships a release.
-
-## What it adds
-
-- **Automatic entry.** A session-start hook sends every non-trivial engineering task through the `mpstack:mpstack` skill. No slash command to remember.
-- **pstack first.** Where the two packs overlap (tests, bug diagnosis, prototypes, design, review, PR bodies, large efforts), pstack owns the step. Matt's skills run only for the jobs pstack has no skill for.
-- **Claude only.** Every agent runs on a Claude model. Other vendors' models and Cursor-only tools named in pstack are mapped to what Claude Code has.
-- **Drift check.** Each session start checks that both packs still ship what mpstack routes to, that no skill names collide, and that no pack is installed twice. It reports upstream version changes in one line.
+The two are merged into this repository's files and rewritten for Claude models only. You install mpstack and nothing else.
 
 ## Install
 
 Requires Claude Code and Node.js.
 
 ```
-/plugin marketplace add cursor/plugins
-/plugin install pstack@cursor-plugins
-/plugin marketplace add mattpocock/skills
-/plugin install mattpocock-skills@mattpocock
 /plugin marketplace add jueyi6/mpstack
 /plugin install mpstack@mpstack
 ```
 
-Turn on auto-update for all three marketplaces in `/plugin` → Marketplaces. Then run `/pstack:setup-pstack` once to choose a model and effort per role. It writes `~/.claude/rules/pstack-models.md`.
+Optional: `/mpstack:setup` picks a model and effort per role. Without it every role keeps its default.
 
-Remove any other copy of pstack or of Matt's skills first, including copies in `~/.claude/skills`. The health check reports them.
+If you already have pstack or Matt Pocock's skills installed as plugins, uninstall them. mpstack carries its own copy, and two copies of the same skill names confuse routing.
 
 ## Use
 
-Ask for engineering work as usual. mpstack picks the route:
+Ask for engineering work as usual. A session-start hook sends every non-trivial task through the `mpstack:mpstack` skill, which first says which route it takes.
 
-- What to build is still open, or you say you have not decided → Matt's interview, then a spec and tickets when the work spans sessions.
-- What to build is settled → the pstack playbook that fits.
+- **Interview.** What to build is still open, or you say you have not decided. It asks one round of questions at a time, each with a recommended answer, and looks up facts itself. For work that spans sessions it then writes a spec and tickets.
+- **Build.** What to build is settled. It matches a playbook (bug fix, feature, refactoring, perf issue, investigation, prototype, and 16 more) and follows it through verification.
 
-`/mpstack:mpstack <task>` starts it by hand. `/mpstack:doctor` runs the health check.
+`/mpstack:mpstack <task>` starts it by hand. `/mpstack:help` answers questions about mpstack itself. Every skill can be typed as `/mpstack:<name>`.
+
+## How the merge was done
+
+- **pstack first.** Where the packs overlap (tests, bug diagnosis, prototypes, design, review, PR text), pstack's skill is the one that ships. Matt's overlapping skills are left out.
+- **Claude only.** Every agent runs on a Claude model. Other vendors' models, Cursor-only tools and Cursor paths are replaced with what Claude Code has. Review panels vary the lens per seat because every seat is the same vendor.
+- **Small at session start.** Only the entry skill is listed to the model. The other 63 are opened by path when a step needs them. The entry skill is held under a size budget by `tools/check.mjs`.
+- **Delegation plan.** Before a task's first subagent the agent shows what it will spawn and waits for one yes.
 
 ## Layout
 
 | Path | Purpose |
 | --- | --- |
-| `skills/mpstack/SKILL.md` | The join: load order, the ownership tables, the Claude-only substitutions. |
-| `skills/doctor/SKILL.md` | Runs the health check and says how to fix what it finds. |
-| `scripts/doctor.mjs` | The health check. The lists at its top name every upstream file and skill mpstack depends on. |
-| `hooks/session-start.mjs` | Injects the routing, both install paths, and any problem or upstream change. |
+| `skills/mpstack/` | The entry skill, its playbooks, `worker.md`, PR scripts. |
+| `skills/<name>/` | Every other skill, opened by the entry skill or typed by the user. |
+| `agents/` | `poteto-agent` (delegate) and `comment-sicko` (comment review). |
+| `hooks/` | The session-start hook. |
+| `UPSTREAM.json` | The upstream versions and commits this tree was merged from. |
+| `tools/upstream.mjs` | Read-only check: what changed upstream since the pins. |
+| `tools/check.mjs` | Lint: frontmatter, links, skill references, wording, entry size. |
+| `tools/port.py` | The mechanical substitutions, as an aid for a hand port. |
 
-## Maintaining it
+## Updating
 
-Edit, commit, push. The plugin has no `version` field, so every commit on `main` is an update.
+mpstack does not follow its upstreams automatically. A maintainer ports new releases by hand with the runbook in `skills/update-mpstack/SKILL.md`: see what changed (`node tools/upstream.mjs`), merge it by meaning, run `node tools/check.mjs`, smoke-test, push. `CHANGELOG.md` records each port. The plugin has no `version` field, so every commit on `main` is a release, and Claude Code picks it up when marketplace auto-update is on.
 
-When an upstream renames or removes a skill, the health check names it. Fix the name in `skills/mpstack/SKILL.md` and in the lists at the top of `scripts/doctor.mjs`.
+## Credits and license
 
-The skill carries a short table that stands in for pstack's Claude Code adapter, so a task does not pay to read the whole adapter. `scripts/doctor.mjs` holds the adapter's hash. When pstack changes the adapter, the health check tells the agent to read the full file until the table and the hash are brought up to date.
-
-## Credits
-
-pstack is by Lauren Tan and Matt Pocock's skills are by Matt Pocock, both MIT licensed. mpstack ships none of their files. The approach of leaving both packs unmodified and joining them from outside follows [moedesux/pocoteto-skills](https://github.com/moedesux/pocoteto-skills).
-
-## License
-
-MIT
+pstack is © Lauren Tan and Matt Pocock's skills are © Matt Pocock, both MIT. Their license texts are in `licenses/`. The merge, the rewrites and the tools are © jueyi6, MIT. See `LICENSE`.

@@ -7,7 +7,7 @@
     {
       "name": "mpstack",
       "source": "./",
-      "description": "pstack first, Matt Pocock's skills for planning, joined for Claude Code. Upstreams stay unmodified and auto-update."
+      "description": "pstack and Matt Pocock's planning skills merged into one Claude-only workflow. Self-contained."
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "pstack": {
+    "repo": "cursor/plugins",
+    "path": "harness/pstack/claude-code",
+    "version": "0.15.46",
+    "commit": "792440e8a560a4a3f63748cdee70491ecd412982",
+    "rename": {
+      "poteto-mode": "mpstack",
+      "poteto-help": "help",
+      "setup-pstack": "setup"
+    },
+    "skip": [
+      "skills/make-bot-ui/",
+      "skills/statechart/scripts/test/",
+      "docs/"
+    ]
+  },
+  "matt": {
+    "repo": "mattpocock/skills",
+    "path": "skills",
+    "version": "1.3.2",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "take": {
+      "productivity/grilling": "grill",
+      "engineering/grill-with-docs": "grill",
+      "engineering/domain-modeling": "domain-modeling",
+      "engineering/to-spec": "to-spec",
+      "engineering/to-tickets": "to-tickets",
+      "engineering/setup-matt-pocock-skills": "setup-tracker",
+      "engineering/research": "research"
+    }
+  }
+}
