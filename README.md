@@ -1,5 +1,7 @@
 # mpstack for Claude Code
 
+English | [한국어](README.ko.md)
+
 One plugin that merges two skill packs into a single engineering workflow for Claude Code.
 
 - [pstack](https://github.com/cursor/plugins) by Lauren Tan supplies the work: 22 playbooks, 24 principles, verification, review panels, PR handling.
@@ -50,6 +52,8 @@ Ask for engineering work as usual. A session-start hook sends every non-trivial 
 | `tools/port.mjs` | The mechanical substitutions, as an aid for a hand port. |
 
 ## Updating
+
+For users: every commit on `main` is a release. With marketplace auto-update on, Claude Code fetches it, or run `claude plugin marketplace update mpstack` and `claude plugin update mpstack@mpstack`. It applies to new sessions.
 
 mpstack does not follow its upstreams automatically. A maintainer ports new releases by hand with the runbook in `skills/update-mpstack/SKILL.md`: see what changed (`node tools/upstream.mjs`), merge it by meaning, run `node tools/check.mjs`, smoke-test, push. `CHANGELOG.md` records each port. The plugin has no `version` field, so every commit on `main` is a release, and Claude Code picks it up when marketplace auto-update is on.
 
