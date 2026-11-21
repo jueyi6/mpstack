@@ -1,0 +1,13 @@
+{
+  "name": "mpstack",
+  "owner": {
+    "name": "jueyi6"
+  },
+  "plugins": [
+    {
+      "name": "mpstack",
+      "source": "./",
+      "description": "pstack first, Matt Pocock's skills for planning, joined for Claude Code. Upstreams stay unmodified and auto-update."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "mpstack",
+  "description": "mpstack for Claude Code. pstack's poteto-mode runs the work and Matt Pocock's skills fill the planning steps it lacks. Both upstream plugins stay unmodified and auto-update. This plugin holds the routing, the pstack-first ownership rules, the Claude-only substitutions and a health check.",
+  "author": {
+    "name": "jueyi6"
+  },
+  "homepage": "https://github.com/jueyi6/mpstack",
+  "repository": "https://github.com/jueyi6/mpstack",
+  "license": "MIT",
+  "keywords": [
+    "pstack",
+    "poteto-mode",
+    "mattpocock",
+    "workflow",
+    "claude-code"
+  ]
+}
