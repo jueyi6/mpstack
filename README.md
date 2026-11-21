@@ -55,6 +55,8 @@ Edit, commit, push. The plugin has no `version` field, so every commit on `main`
 
 When an upstream renames or removes a skill, the health check names it. Fix the name in `skills/mpstack/SKILL.md` and in the lists at the top of `scripts/doctor.mjs`.
 
+The skill carries a short table that stands in for pstack's Claude Code adapter, so a task does not pay to read the whole adapter. `scripts/doctor.mjs` holds the adapter's hash. When pstack changes the adapter, the health check tells the agent to read the full file until the table and the hash are brought up to date.
+
 ## Credits
 
 pstack is by Lauren Tan and Matt Pocock's skills are by Matt Pocock, both MIT licensed. mpstack ships none of their files. The approach of leaving both packs unmodified and joining them from outside follows [moedesux/pocoteto-skills](https://github.com/moedesux/pocoteto-skills).

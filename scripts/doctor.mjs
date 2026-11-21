@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -40,8 +41,8 @@ const MATT_ROUTED = {
   research: { byModel: true },
 };
 
-// Matt skills whose job pstack owns. The session hook tells the model not to reach for these.
-export const MATT_UNUSED_BY_MODEL = ["tdd", "diagnosing-bugs", "prototype", "codebase-design", "code-review", "pr", "writing-for-agents"];
+// skills/mpstack/SKILL.md section 2 is a digest of pstack's Claude Code adapter at this content hash.
+const ADAPTER = { path: "docs/harness/claude-code.md", sha256: "2d6674399525e8e427a9e778ed26d3de613fd096f8a018539ffa34c3a1b0e14d" };
 
 const RETIRED_ROLES = [
   "hardest tasks",
@@ -149,6 +150,15 @@ export function inspect() {
     const missing = PSTACK_FILES.filter((rel) => !existsSync(join(pstackRoot, rel)));
     if (missing.length) {
       problems.push(`pstack no longer ships ${missing.join(", ")}. mpstack routes to these, so its skill needs updating.`);
+    }
+  }
+
+  if (pstackRoot && existsSync(join(pstackRoot, ADAPTER.path))) {
+    const adapter = join(pstackRoot, ADAPTER.path);
+    if (createHash("sha256").update(readFileSync(adapter)).digest("hex") !== ADAPTER.sha256) {
+      problems.push(
+        `pstack changed its Claude Code adapter, so the name table in mpstack's skill may be stale. Read ${adapter} in full this session before following pstack, and mpstack's skill needs a review.`,
+      );
     }
   }
 
