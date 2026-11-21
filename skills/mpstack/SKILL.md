@@ -7,18 +7,18 @@ description: The user's default engineering workflow. Use before exploring code 
 
 pstack runs the work. Matt Pocock's skills fill the planning jobs pstack lacks. Both are installed unmodified at `<pstack>` and `<matt>`, which the session-start context gives under "mpstack paths". If they are missing, run `node ../../scripts/doctor.mjs` from this skill's base directory.
 
-## 1. Load pstack
+## 1. Say the route
 
-Your next tool call reads `<pstack>/skills/poteto-mode/SKILL.md` in full, before you look at the user's code, however small the task. It governs the rest of the task. Skip the read only if you already made it this session.
+Before any tool call, tell the user in one sentence which route this task takes and why.
+
+- **Interview** (section 5): what to build is a product or preference call no experiment can settle, or the user says they have not decided something, even something technical, or they ask to plan, specify or be grilled. poteto-mode's rule against asking does not cover these.
+- **Build**: everything else.
+
+## 2. Load pstack
+
+Then read `<pstack>/skills/poteto-mode/SKILL.md` in full, before you look at the user's code, however small the task. It governs the rest of the task. Skip the read only if you already made it this session. On the Build route, open the matching playbook file next.
 
 The Skill tool refuses pstack skills and most Matt skills. Never call it for them. Read `<pstack>/skills/<name>/SKILL.md`, or find a Matt skill with Glob `<matt>/skills/**/<name>/SKILL.md`, and follow the file. The user installed mpstack so these run without being typed.
-
-## 2. Say the route
-
-After that read, say in one sentence which route this task takes and why.
-
-- **Interview** (section 5): what to build is a product or preference call no experiment can settle, or the user says they have not decided something, or they ask to plan, specify or be grilled. poteto-mode's rule against asking does not cover these.
-- **Build**: everything else. Open the matching playbook file before you touch code.
 
 ## 3. Claude Code names
 
