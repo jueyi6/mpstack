@@ -16,7 +16,7 @@ Run `node tools/upstream.mjs`. It compares each pin with the upstream default br
 
 For every listed file, read the upstream diff (`node tools/upstream.mjs --diff <upstream path>`) and apply its meaning to the mpstack file by hand.
 
-- **Skill bodies ported from pstack** (most of `skills/`): apply the diff, then make the new text Claude-native. `tools/port.py` holds the mechanical substitutions (tool names, model values, paths, skill prefixes) and can be run on a fresh checkout into a scratch folder to see what a mechanical port gives. Never overwrite the repo with its output.
+- **Skill bodies ported from pstack** (most of `skills/`): apply the diff, then make the new text Claude-native. `tools/port.mjs` holds the mechanical substitutions (tool names, model values, paths, skill prefixes) and can be run on a fresh checkout into a scratch folder to see what a mechanical port gives. Never overwrite the repo with its output.
 - **Hand-written files**: `skills/mpstack/SKILL.md`, `skills/help/SKILL.md`, `skills/setup/SKILL.md`, `skills/grill/SKILL.md`, `skills/research/SKILL.md`, `skills/setup-tracker/SKILL.md`. Upstream changes to their sources (`poteto-mode`, `poteto-help`, `setup-pstack`, `grilling`, `grill-with-docs`, `research`, `setup-matt-pocock-skills`) are merged by meaning. Keep these files short.
 - **New upstream skill**: pstack → port it. Matt → take it only if it does a job pstack has no skill for, and say so in the report. Add it to `UPSTREAM.json` and to the table in `skills/help/SKILL.md`.
 - **Removed or renamed upstream skill**: do the same here and fix every reference.

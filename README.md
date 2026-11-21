@@ -9,7 +9,7 @@ The two are merged into this repository's files and rewritten for Claude models 
 
 ## Install
 
-Requires Claude Code and Node.js.
+Requires Claude Code and Node.js. The hook and every tool are plain Node scripts with no dependencies and no build step.
 
 ```
 /plugin marketplace add jueyi6/mpstack
@@ -47,7 +47,7 @@ Ask for engineering work as usual. A session-start hook sends every non-trivial 
 | `UPSTREAM.json` | The upstream versions and commits this tree was merged from. |
 | `tools/upstream.mjs` | Read-only check: what changed upstream since the pins. |
 | `tools/check.mjs` | Lint: frontmatter, links, skill references, wording, entry size. |
-| `tools/port.py` | The mechanical substitutions, as an aid for a hand port. |
+| `tools/port.mjs` | The mechanical substitutions, as an aid for a hand port. |
 
 ## Updating
 
