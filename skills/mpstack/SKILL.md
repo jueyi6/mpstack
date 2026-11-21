@@ -11,12 +11,12 @@ pstack runs the work. Matt Pocock's skills fill the planning jobs pstack lacks. 
 
 Before any tool call, tell the user in one sentence which route this task takes and why.
 
-- **Interview** (section 5): what to build is a product or preference call no experiment can settle, or the user says they have not decided something, even something technical, or they ask to plan, specify or be grilled. poteto-mode's rule against asking does not cover these.
-- **Build**: everything else.
+- **Interview**: what to build is a product or preference call no experiment can settle, or the user says they have not decided something, even something technical, or they ask to plan, specify or be grilled. Go to section 5 now. Do not load pstack until the interview ends.
+- **Build**: everything else. Go to section 2.
 
 ## 2. Load pstack
 
-Then read `<pstack>/skills/poteto-mode/SKILL.md` in full, before you look at the user's code, however small the task. It governs the rest of the task. Skip the read only if you already made it this session. On the Build route, open the matching playbook file next.
+Read `<pstack>/skills/poteto-mode/SKILL.md` in full before you look at the user's code, however small the task. It governs the rest of the task. Skip the read only if you already made it this session. On the Build route, open the matching playbook file next.
 
 The Skill tool refuses pstack skills and most Matt skills. Never call it for them. Read `<pstack>/skills/<name>/SKILL.md`, or find a Matt skill with Glob `<matt>/skills/**/<name>/SKILL.md`, and follow the file. The user installed mpstack so these run without being typed.
 
@@ -59,10 +59,10 @@ Every other job goes to pstack's skill or playbook: building, tests, diagnosis, 
 
 ## 5. Interview
 
-1. Read the Matt skill before the first question. Where it calls the Skill tool with a bare name such as "grilling", call `mattpocock-skills:<name>`.
-2. Ask only product and preference questions. Look up or run every fact. A small feature goes straight to its playbook after this.
+1. Glob `<matt>/skills/**/grill-with-docs/SKILL.md` (`grill-me` with no repo), read it, and follow it before you ask anything. Never interview from memory. Where it calls the Skill tool with a bare name such as "grilling", call `mattpocock-skills:<name>`.
+2. Ask only product and preference questions, and the points the user said are undecided. Look up or run every other fact.
 3. Multi-session work, or the user wants it written down → `to-spec`, then `to-tickets`. With no `docs/agents/issue-tracker.md`, run `setup-matt-pocock-skills` first, choosing the local markdown tracker when there is no git remote. Give every ticket a **Proof** line: the surface to drive and the result to observe.
-4. Asked for a plan → stop and report. Asked for the thing built → continue once the user approves.
+4. Asked for a plan → stop and report. Asked for the thing built → once the user answers, go to section 2 and build.
 
 ## 6. Building from a ticket
 
