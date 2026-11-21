@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-22: wayfinder, fused with pstack
+
+`wayfinder` (Matt Pocock's skills 1.3.2) is now part of mpstack. The first release left it out as overlapping pstack's large-work skills. That was wrong: it plans by resolving decisions, which pstack has no skill for.
+
+- The map, decision tickets, fog and frontier are kept as upstream wrote them.
+- Tickets are resolved with pstack's tools: `research` tickets use `research`, `how` or `why`. `prototype` tickets run the Prototype playbook. One-way-door shapes go through `architect`. Every answer carries its evidence label.
+- HITL tickets are the user's call. AFK tickets proceed without asking. Research fan-out goes through the delegation plan.
+- Arrival hands the route to `to-spec` and `to-tickets`, `figure-it-out`, or the Multi-phase plan playbook, with the map's decisions as settled input.
+- pstack's side points back: `figure-it-out`, Multi-phase plan and Session pickup read an existing map and send unsettled large work to `wayfinder`.
+- The tracker templates regain their "Wayfinding operations" sections.
+
 ## 2026-11-22: first merged release
 
 Upstreams: pstack 0.15.46 (`cursor/plugins` @ 792440e8, tree `harness/pstack/claude-code`), Matt Pocock's skills 1.3.2 (`mattpocock/skills` @ abeeaf95).

@@ -11,6 +11,7 @@ Every other mpstack skill lives at `../<name>/SKILL.md` from this file. The Skil
 
 Before any tool call, tell the user in one sentence which route this task takes and why.
 
+- **Wayfind**: the work is more than one session can hold and the way there is unclear: the user does not know where to start, or it hangs on many open decisions. Your next tool call reads `../wayfinder/SKILL.md`. Follow it, not the Interview steps. The rules under Build do not apply until its map is clear.
 - **Interview**: what to build is a product or preference call no experiment can settle, or the user says they have not decided something, even something technical, or they ask to plan, specify or be grilled. Go to Interview now. The rules under Build do not apply until the interview ends.
 - **Build**: everything else. Restate the user's goal and the smallest change that meets it. Your next tool call reads the matching file under `playbooks/`, before you look at the user's code, however small the task.
 
@@ -18,7 +19,7 @@ Before any tool call, tell the user in one sentence which route this task takes 
 
 1. Read `../grill/SKILL.md` and follow it before you ask anything. Never interview from memory.
 2. Ask only product and preference questions, and the points the user said are undecided. Look up or run every other fact yourself.
-3. Multi-session work, or the user wants it written down → **to-spec**, then **to-tickets**. With no `docs/agents/issue-tracker.md`, run **setup-tracker** first.
+3. The interview shows the work is too big for one session with the way still unclear → switch to **wayfinder**. Multi-session work whose way is clear, or the user wants it written down → **to-spec**, then **to-tickets**. With no `docs/agents/issue-tracker.md`, run **setup-tracker** first.
 4. Asked for a plan → stop and report. Asked for the thing built → once the user answers, take the Build route.
 
 ## Build
@@ -39,6 +40,7 @@ In your reply, name each principle that shaped a decision and the choice it chan
 - Bot review comments → judge each on its merits.
 - Long or unattended work → **show-me-your-work**.
 - Outside facts gathered into a cited file → **research**.
+- An open wayfinder map covers this work → its Decisions so far are settled input. Build from them, and send a new open decision back to the map as a ticket.
 - Working from a ticket → read it, then `GLOSSARY.md` and the area's ADRs if they exist, and use the glossary's terms in names. Its acceptance criteria and Proof line are what the verify step must show. One ticket per playbook run, blockers first. With a GitHub tracker the PR's `## Why` ends with `Closes #<n>`. A new term or a hard-to-reverse decision → **domain-modeling**.
 
 ### Principles

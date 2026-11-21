@@ -19,6 +19,7 @@ const MATT_TAKE = {
   "engineering/to-tickets": "to-tickets",
   "engineering/setup-matt-pocock-skills": "setup-tracker",
   "engineering/research": "research",
+  "engineering/wayfinder": "wayfinder",
 };
 const SKIP_PATHS = ["statechart/scripts/test/"];
 

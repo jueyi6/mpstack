@@ -84,6 +84,7 @@ const buildAt = entry.indexOf("## Build");
 const interviewAt = entry.indexOf("## Interview");
 if (routeAt < 0 || interviewAt < routeAt || buildAt < interviewAt)
   fail(join(skillsDir, ENTRY, "SKILL.md"), "sections must run: route, Interview, Build");
+if (!/\*\*Wayfind\*\*.*wayfinder\/SKILL\.md/.test(entry)) fail(join(skillsDir, ENTRY, "SKILL.md"), "the route step must send Wayfind to wayfinder");
 
 const playbooks = readdirSync(join(skillsDir, ENTRY, "playbooks")).map((f) => f.replace(/\.md$/, ""));
 const listed = /\n(Investigation, [^\n]+)\n/.exec(entry);

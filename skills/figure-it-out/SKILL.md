@@ -16,7 +16,7 @@ Open a task list whose first item is to read the Principles section of the **mps
 
 ## Phase A: Frame
 
-Ground first, then commit. Don't start the run until you can state:
+Ground first, then commit. If a **wayfinder** map covers this work, read the frame off it: its Destination is the goal and its Decisions so far are settled, not reopened. If you cannot state the items below because decisions are open that no run can settle, and the work exceeds one session, stop and chart it with **wayfinder** first. Don't start the run until you can state:
 
 - The definition of done as a falsifiable predicate (the **prove-it-works** principle skill).
 - Scope, quantified: rough units and effort, plus the blockers grounding surfaced.

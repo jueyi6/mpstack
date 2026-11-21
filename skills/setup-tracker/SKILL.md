@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Set up the tracker
 
-Write the per-repo files that **to-spec**, **to-tickets**, and ticket-driven builds read. Explore, present what you found, confirm, then write.
+Write the per-repo files that **to-spec**, **to-tickets**, **wayfinder**, and ticket-driven builds read. Explore, present what you found, confirm, then write.
 
 ## 1. Explore
 

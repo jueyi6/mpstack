@@ -13,7 +13,7 @@ This file maps questions to the files that hold the answers. Read the file you r
 ## How it runs
 
 - A session-start hook tells the agent to open `mpstack:mpstack` for every non-trivial engineering task. The user types nothing. `/mpstack:mpstack <task>` starts it by hand.
-- That skill first says the route. **Interview** when what to build is still open. **Build** when it is settled, which matches a playbook.
+- That skill first says the route. **Wayfind** when the work is too big for one session and the way is unclear. **Interview** when what to build is still open. **Build** when it is settled, which matches a playbook.
 - Only `mpstack:mpstack` is listed to the model. Every other skill is opened by the entry skill, or typed by the user as `/mpstack:<name>`.
 - Before a task's first subagent the agent shows a delegation plan and waits for a yes.
 
@@ -63,6 +63,7 @@ The default answer is `/mpstack:mpstack`, which runs most of the others when its
 | Turn what a finished task taught into skill edits | [`/mpstack:reflect`](../reflect/SKILL.md) |
 | Stop agents from repeating the same mistakes in this repo | [`/mpstack:correct`](../correct/SKILL.md) |
 | Decide what to build by being interviewed, one round of questions at a time | [`/mpstack:grill`](../grill/SKILL.md) |
+| Plan work too big for one session as a map of decision tickets, resolved one per session | [`/mpstack:wayfinder`](../wayfinder/SKILL.md) |
 | Write the agreed plan as a spec in the issue tracker | [`/mpstack:to-spec`](../to-spec/SKILL.md) |
 | Split a spec or plan into tickets with blocking edges | [`/mpstack:to-tickets`](../to-tickets/SKILL.md) |
 | Tell mpstack where this repo's issues and domain docs live | [`/mpstack:setup-tracker`](../setup-tracker/SKILL.md) |
@@ -79,6 +80,7 @@ Close calls:
 - `/mpstack:arena` gives every worker the same brief and merges the best parts. `/mpstack:swarm` splits work into slices or a race and returns one report.
 - `/mpstack:interrogate` reviews the diff. `/mpstack:blast-radius` looks for breakage outside the diff.
 - `/mpstack:recall` rebuilds context across recent sessions. `/mpstack:ketchup` covers only this chat since the user's last message. Resuming one chat or branch is the Session pickup playbook.
+- `/mpstack:wayfinder` finds the way when the work is too big and unclear for one session and ends in decisions. `/mpstack:figure-it-out` executes a large change whose way is known. The Multi-phase plan playbook writes the PR plan.
 - `/mpstack:grill` decides what to build. `/mpstack:in-your-own-words` only checks the agent understood a settled request.
 
 ## Playbooks and principles
