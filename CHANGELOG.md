@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-26: shorter entry skill
+
+The entry skill is reworded from 11,764 to 10,699 characters (about 270 tokens less per task). No rule was removed. The route section is unchanged, and the three route smoke prompts pass 3/3 each.
+
 ## 2026-11-26: pstack 0.15.48
 
 Upstreams: pstack 0.15.46 → 0.15.48 (`cursor/plugins` @ b1fbf4b6), Matt Pocock's skills 1.3.2 (`mattpocock/skills` @ 6f7f7831, no release).
