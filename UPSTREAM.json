@@ -2,8 +2,8 @@
   "pstack": {
     "repo": "cursor/plugins",
     "path": "harness/pstack/claude-code",
-    "version": "0.15.46",
-    "commit": "792440e8a560a4a3f63748cdee70491ecd412982",
+    "version": "0.15.48",
+    "commit": "b1fbf4b60ac6813b4583ccc356850dafcf492665",
     "rename": {
       "poteto-mode": "mpstack",
       "poteto-help": "help",
@@ -19,7 +19,7 @@
     "repo": "mattpocock/skills",
     "path": "skills",
     "version": "1.3.2",
-    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "commit": "6f7f7831a625f040a8e06a0e7954826b87ce775a",
     "take": {
       "productivity/grilling": "grill",
       "engineering/grill-with-docs": "grill",

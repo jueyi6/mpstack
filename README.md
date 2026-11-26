@@ -37,7 +37,7 @@ Ask for engineering work as usual. A session-start hook sends every non-trivial 
 - **pstack first.** Where the packs overlap (tests, bug diagnosis, prototypes, design, review, PR text), pstack's skill is the one that ships. Matt's overlapping skills are left out.
 - **Fused, not stacked.** Wayfinder's decision tickets are resolved with pstack's tools (prototype playbook, `how`, `why`, `architect`, `research`), and pstack's large-work skills read the finished map as settled input.
 - **Claude only.** Every agent runs on a Claude model. Other vendors' models, Cursor-only tools and Cursor paths are replaced with what Claude Code has. Review panels vary the lens per seat because every seat is the same vendor.
-- **Small at session start.** Only the entry skill is listed to the model. The other 64 are opened by path when a step needs them. The entry skill is held under a size budget by `tools/check.mjs`.
+- **Small at session start.** Only the entry skill is listed to the model. The other 65 are opened by path when a step needs them. The entry skill is held under a size budget by `tools/check.mjs`.
 - **Delegation plan.** Before a task's first subagent the agent shows what it will spawn and waits for one yes.
 
 ## Layout

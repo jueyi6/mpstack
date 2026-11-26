@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-26: pstack 0.15.48
+
+Upstreams: pstack 0.15.46 → 0.15.48 (`cursor/plugins` @ b1fbf4b6), Matt Pocock's skills 1.3.2 (`mattpocock/skills` @ 6f7f7831, no release).
+
+- New skill `reframe` from pstack: teaches the expert words for what you are building, borrows terms from neighboring fields, checks every cited link, and rewrites your description. Run it with `/mpstack:reframe`. Listed in `help`.
+- `domain-modeling`: glossary definitions bold the other glossary terms they mention and say how the two relate.
+- Left out: pstack's guide page and README changes (mpstack carries no guide pages; the `help` row covers it). Matt's `chief-of-staff` changes (an unreleased `in-progress` skill).
+
 ## 2026-11-22: wayfinder, fused with pstack
 
 `wayfinder` (Matt Pocock's skills 1.3.2) is now part of mpstack. The first release left it out as overlapping pstack's large-work skills. That was wrong: it plans by resolving decisions, which pstack has no skill for.

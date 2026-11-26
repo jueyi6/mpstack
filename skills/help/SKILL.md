@@ -34,6 +34,7 @@ The default answer is `/mpstack:mpstack`, which runs most of the others when its
 | Do any non-trivial task with rigor | [`/mpstack:mpstack`](../mpstack/SKILL.md) |
 | Check that the agent understood their goal and the problem before it starts | [`/mpstack:in-your-own-words`](../in-your-own-words/SKILL.md) |
 | Get a prompt rewritten deeper, not bigger, before sending it: what a top professional would add, their raw material and methods, and an outside check. It returns the prompt and doesn't do the task | [`/mpstack:sharpen`](../sharpen/SKILL.md) |
+| Learn the expert words for what they're building, including words borrowed from neighboring fields, with every cited source checked, and get their description rewritten with them | [`/mpstack:reframe`](../reframe/SKILL.md) |
 | Know how code works now, or where new code should live | [`/mpstack:how`](../how/SKILL.md) |
 | Know why code is shaped this way, or where a number came from | [`/mpstack:why`](../why/SKILL.md) |
 | Understand a change or subsystem, explained plainly | [`/mpstack:teach`](../teach/SKILL.md) |
